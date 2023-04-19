@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UploadActivity">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="670dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+
+            <LinearLayout
+                android:layout_width="326dp"
+                android:layout_height="136dp"
+                android:layout_gravity="fill_horizontal"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/face1"
+                    android:layout_width="119dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:contentDescription="@string/app_name"
+                    android:paddingTop="15dp"
+                    android:src="@drawable/upload" />
+
+                                <ImageView
+                                    android:id="@+id/face2"
+                                    android:layout_width="110dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="left"
+                                    android:contentDescription="@string/app_name"
+                                    android:paddingTop="15dp" />
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/face3"-->
+                <!--                    android:layout_width="111dp"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    android:layout_gravity="left"-->
+                <!--                    android:contentDescription="@string/app_name"-->
+                <!--                    android:paddingTop="15dp" />-->
+
+            </LinearLayout>
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="99dp"-->
+<!--                android:layout_gravity="fill_horizontal"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/muzzle1"-->
+<!--                    android:layout_width="114dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_gravity="left"-->
+<!--                    android:contentDescription="@string/app_name"-->
+<!--                    android:paddingTop="15dp" />-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/muzzle2"-->
+<!--                    android:layout_width="109dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_gravity="left"-->
+<!--                    android:contentDescription="@string/app_name"-->
+<!--                    android:paddingTop="15dp" />-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/muzzle3"-->
+<!--                    android:layout_width="101dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_gravity="left"-->
+<!--                    android:contentDescription="@string/app_name"-->
+<!--                    android:paddingTop="15dp" />-->
+
+<!--            </LinearLayout>-->
+            <EditText
+                android:id="@+id/tag_no"
+                android:layout_width="324dp"
+                android:layout_height="50dp"
+                android:gravity="start|center_vertical"
+                android:hint="TAG NO" />
+
+            <EditText
+                android:id="@+id/pet_name"
+                android:layout_width="324dp"
+                android:layout_height="50dp"
+                android:gravity="start|center_vertical"
+                android:hint="PET NAME" />
+
+            <EditText
+                android:id="@+id/age_text"
+                android:layout_width="324dp"
+                android:layout_height="50dp"
+                android:gravity="start|center_vertical"
+                android:hint="AGE" />
+
+            <EditText
+                android:id="@+id/breed_txt"
+                android:layout_width="324dp"
+                android:layout_height="50dp"
+                android:gravity="start|center_vertical"
+                android:hint="BREED" />
+
+
+
+            <EditText
+                android:id="@+id/medical_txt"
+                android:layout_width="324dp"
+                android:layout_height="50dp"
+                android:gravity="start|center_vertical"
+                android:hint="MEDICAL HISTORY" />
+
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:text="Save"
+                android:textSize="18sp"
+                app:cornerRadius="20dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</ScrollView>
