@@ -20,6 +20,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,25 +35,27 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 
 
-public class secondFragment extends Fragment {
+public class secondFragment extends AppCompatActivity {
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1888;
     Button button,saveButton;
     ImageView imageView;
     String ImageURL;
     EditText EnterID;
     Uri uri;
+    Button Gallery,Capture,Settings;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        final View rootView = inflater.inflate(R.layout.fragment_second,
-                container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_second);
 
 //        button = (Button) rootView.findViewById(R.id.camera_button);
-        imageView = (ImageView) rootView.findViewById(R.id.click_image);
-        saveButton = (Button) rootView.findViewById(R.id.savebutton);
-        EnterID = (EditText) rootView.findViewById(R.id.enterID);
+        imageView = findViewById(R.id.click_image);
+        saveButton = findViewById(R.id.savebutton);
+        EnterID = findViewById(R.id.enterID);
+        Gallery=findViewById(R.id.gallery);
+        Capture=findViewById(R.id.capture);
+        Settings=findViewById(R.id.settings);
         ActivityResultLauncher<Intent> activityResultLauncher1=registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -65,7 +68,7 @@ public class secondFragment extends Fragment {
 
                         }
                         else{
-                            Toast.makeText(getActivity(), "No Image Selected", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(secondFragment.this, "No Image Selected", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -84,13 +87,27 @@ public class secondFragment extends Fragment {
                 saveImage();
             }
         });
-        return rootView;
+        Gallery.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(secondFragment.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        Settings.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(secondFragment.this,ThirdFragment.class);
+                startActivity(intent);
+            }
+        });
+//        return rootView;
     }
 
     public void saveImage(){
         StorageReference storageReference1 = FirebaseStorage.getInstance().getReference().child("Clicked Images")
                 .child(uri.getLastPathSegment());
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(secondFragment.this);
         builder.setCancelable(false);
         builder.setView(R.layout.progress_layout);
         AlertDialog dialog = builder.create();
@@ -120,14 +137,14 @@ public class secondFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(getActivity(), "Saved", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(secondFragment.this, "Saved", Toast.LENGTH_SHORT).show();
 //                            finish();
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(secondFragment.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }

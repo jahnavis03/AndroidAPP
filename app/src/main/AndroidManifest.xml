@@ -67,6 +67,12 @@
         <activity
             android:name=".UploadActivity"
             android:exported="true" />
+        <activity
+            android:name=".secondFragment"
+            android:exported="true" />
+        <activity
+            android:name=".ThirdFragment"
+            android:exported="true" />
     </application>
 
 </manifest>

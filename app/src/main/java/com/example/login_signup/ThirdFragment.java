@@ -7,12 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class ThirdFragment extends Fragment {
+public class ThirdFragment extends AppCompatActivity {
 
     Button Profile;
     Button Themes;
@@ -23,27 +24,24 @@ public class ThirdFragment extends Fragment {
     Button Logout;
     FirebaseAuth auth;
     FirebaseUser user;
+    Button Gallery,Capture,Settings;
 
     public ThirdFragment(){
         // require a empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        return inflater.inflate(R.layout.fragment_third, container, false);
-    }
-
-
-
-        public void onViewCreated(View view, Bundle savedInstanceState){
-            super.onViewCreated(view, savedInstanceState);
-
-            Profile = (Button) view.findViewById(R.id.profile);
-            Feedback=(Button)view.findViewById(R.id.feedback);
-            Demo=(Button)view.findViewById(R.id.instructions);
-            Change_Password=(Button)view.findViewById(R.id.change_password);
-            Logout=(Button)view.findViewById(R.id.logout);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_third);
+        Gallery=findViewById(R.id.gallery);
+        Capture=findViewById(R.id.capture);
+        Settings=findViewById(R.id.settings);
+            Profile = findViewById(R.id.profile);
+            Feedback=findViewById(R.id.feedback);
+            Demo=findViewById(R.id.instructions);
+            Change_Password=findViewById(R.id.change_password);
+            Logout=findViewById(R.id.logout);
             auth=FirebaseAuth.getInstance();
             user=auth.getCurrentUser();
 //            if(user==null){
@@ -62,18 +60,33 @@ public class ThirdFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     FirebaseAuth.getInstance().signOut();
-                    Intent intent = new Intent(getActivity(), login.class);
-                    getActivity().startActivity(intent);
+                    Intent intent = new Intent(ThirdFragment.this, login.class);
+                    startActivity(intent);
                 }
             });
 
             Profile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), Profile.class);
-                    getActivity().startActivity(intent);
+                    Intent intent = new Intent(ThirdFragment.this, Profile.class);
+                    startActivity(intent);
                 }
             });
+                Gallery.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(ThirdFragment.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        Capture.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(ThirdFragment.this,secondFragment.class);
+                startActivity(intent);
+            }
+        });
+
 //            Themes.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
