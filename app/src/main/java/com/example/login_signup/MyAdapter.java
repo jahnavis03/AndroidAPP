@@ -43,7 +43,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("Image", dataList.get(holder.getAdapterPosition()).getFaceImage1());
+                intent.putExtra("Image1", dataList.get(holder.getAdapterPosition()).getFaceImage1());
+                intent.putExtra("Image2", dataList.get(holder.getAdapterPosition()).getFaceImage2());
+                intent.putExtra("Image3", dataList.get(holder.getAdapterPosition()).getFaceImage3());
+                intent.putExtra("Image4", dataList.get(holder.getAdapterPosition()).getMuzzleImage1());
+                intent.putExtra("Image5", dataList.get(holder.getAdapterPosition()).getMuzzleImage2());
+                intent.putExtra("Image6", dataList.get(holder.getAdapterPosition()).getMuzzleImage3());
                 intent.putExtra("Breed", dataList.get(holder.getAdapterPosition()).getBreed());
                 intent.putExtra("Pet", dataList.get(holder.getAdapterPosition()).getPetName());
                 intent.putExtra("Key",dataList.get(holder.getAdapterPosition()).getKey());

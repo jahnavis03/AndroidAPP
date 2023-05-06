@@ -32,23 +32,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Profile = findViewById(R.id.profile);
-//        Instr=findViewById(R.id.instructions);
-
-//        Profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-//            }
-//        });
-
-
-//        Instr.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, About.class));
-//            }
-//        });
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 

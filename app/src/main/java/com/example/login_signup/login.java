@@ -161,7 +161,7 @@ public class login extends AppCompatActivity {
                                 intent.putExtra("occupation", occupationFromDB);
                                 intent.putExtra("dob", dobFromDB);
 
-                                Intent main= new Intent(getApplicationContext(),MainActivity.class);
+                                Intent main= new Intent(login.this,MainActivity.class);
 
                             startActivity(main);
                         } else {
