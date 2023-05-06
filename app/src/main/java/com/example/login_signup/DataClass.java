@@ -74,5 +74,7 @@ public void setKey(String key) {
         this.muzzleImage2=muzzleImage2;
         this.muzzleImage3=muzzleImage3;
     }
+    public DataClass(){
 
+    }
 }
