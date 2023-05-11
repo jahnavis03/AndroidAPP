@@ -1,16 +1,18 @@
 package com.example.login_signup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.SearchView;
+//import android.widget.SearchView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -41,11 +43,14 @@ public class MainActivity extends AppCompatActivity {
 
         fab = findViewById(R.id.fab);
         recyclerView=findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         Gallery=findViewById(R.id.gallery);
         Capture=findViewById(R.id.capture);
         Settings=findViewById(R.id.settings);
 //        searchView=findViewById(R.id.search);
 //        searchView.clearFocus();
+
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(MainActivity.this,1);
         recyclerView.setLayoutManager(gridLayoutManager);
@@ -59,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         dataList=new ArrayList<>();
 
-        MyAdapter adapter=new MyAdapter(MainActivity.this,dataList);
+        adapter=new MyAdapter(MainActivity.this,dataList);
         recyclerView.setAdapter(adapter);
 
         databaseReference= FirebaseDatabase.getInstance().getReference("Android Tutorials");
@@ -87,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
 //        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 //            @Override
 //            public boolean onQueryTextSubmit(String query)  {
-//
 //                return false;
 //            }
 //
@@ -104,13 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        Gallery.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view){
-//                Intent intent = new Intent(MainActivity.this,UploadActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+//
         Capture.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -127,10 +125,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-//    public void searchList(String text){
+//    public void searchList(String newText){
 //        ArrayList<DataClass> searchList=new ArrayList<>();
 //        for(DataClass dataClass: dataList){
-//            if(dataClass.getPetName().toLowerCase().contains(text.toLowerCase())){
+//            if(dataClass.getPetName().toLowerCase().contains(newText.toLowerCase())){
 //                searchList.add(dataClass);
 //            }
 //        }

@@ -141,21 +141,21 @@ public class login extends AppCompatActivity {
 
                             if (passwordFromDB.equals(userPassword)){
                                 username.setError(null);
-                            String nameFromDB = snapshot.child(userUsername).child("name").getValue(String.class);
-                            String emailFromDB = snapshot.child(userUsername).child("email").getValue(String.class);
-                            String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
+                                String nameFromDB = snapshot.child(userUsername).child("name").getValue(String.class);
+                                String emailFromDB = snapshot.child(userUsername).child("email").getValue(String.class);
+                                String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
                                 String phoneFromDB = snapshot.child(userUsername).child("phone").getValue(String.class);
                                 String addressFromDB = snapshot.child(userUsername).child("address").getValue(String.class);
                                 String occupationFromDB = snapshot.child(userUsername).child("occupation").getValue(String.class);
                                 String dobFromDB = snapshot.child(userUsername).child("dob").getValue(String.class);
 
 
-                            Intent intent = new Intent(login.this,Profile.class);
+                                Intent intent = new Intent(login.this,Profile.class);
 
-                            intent.putExtra("Name", nameFromDB);
-                            intent.putExtra("email", emailFromDB);
-                            intent.putExtra("username", usernameFromDB);
-                            intent.putExtra("password", passwordFromDB);
+                                intent.putExtra("Name", nameFromDB);
+                                intent.putExtra("email", emailFromDB);
+                                intent.putExtra("username", usernameFromDB);
+                                intent.putExtra("password", passwordFromDB);
                                 intent.putExtra("phone", phoneFromDB);
                                 intent.putExtra("address", addressFromDB);
                                 intent.putExtra("occupation", occupationFromDB);
@@ -163,16 +163,16 @@ public class login extends AppCompatActivity {
 
                                 Intent main= new Intent(login.this,MainActivity.class);
 
-                            startActivity(main);
+                                startActivity(main);
+                            } else {
+                                password.setError("Invalid Credentials");
+                                password.requestFocus();
+                            }
                         } else {
-                            password.setError("Invalid Credentials");
-                            password.requestFocus();
+                            username.setError("User does not exist");
+                            username.requestFocus();
                         }
-                    } else {
-                        username.setError("User does not exist");
-                        username.requestFocus();
                     }
-                }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
@@ -208,7 +208,7 @@ public class login extends AppCompatActivity {
 //
 //            });
 
-    };});}
+            };});}
 //    public void updateUI(FirebaseUser currentUser) {
 //        Intent profileIntent = new Intent(getApplicationContext(), Profile.class);
 //        profileIntent.putExtra("email", currentUser.getEmail());

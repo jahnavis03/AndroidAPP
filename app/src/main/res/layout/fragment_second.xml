@@ -79,7 +79,8 @@
         android:layout_marginTop="145dp"
         android:backgroundTint="#FFFFFF"
         android:text="Capture"
-        android:textColor="#000000"
+        android:textColor="#390F50"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/settings"
         app:layout_constraintTop_toBottomOf="@+id/savebutton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
