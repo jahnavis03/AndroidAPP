@@ -37,13 +37,13 @@ public class ThirdFragment extends AppCompatActivity {
         Gallery=findViewById(R.id.gallery);
         Capture=findViewById(R.id.capture);
         Settings=findViewById(R.id.settings);
-            Profile = findViewById(R.id.profile);
-            Feedback=findViewById(R.id.feedback);
-            Demo=findViewById(R.id.instructions);
-            Change_Password=findViewById(R.id.change_password);
-            Logout=findViewById(R.id.logout);
-            auth=FirebaseAuth.getInstance();
-            user=auth.getCurrentUser();
+        Profile = findViewById(R.id.profile);
+        Feedback=findViewById(R.id.feedback);
+        Demo=findViewById(R.id.instructions);
+        Change_Password=findViewById(R.id.change_password);
+        Logout=findViewById(R.id.logout);
+        auth=FirebaseAuth.getInstance();
+        user=auth.getCurrentUser();
 //            if(user==null){
 //                Intent intent=new Intent(getApplicationContext(),login.class);
 //                startActivity(intent);
@@ -72,7 +72,7 @@ public class ThirdFragment extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-                Gallery.setOnClickListener(new View.OnClickListener(){
+            Gallery.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(ThirdFragment.this,MainActivity.class);
@@ -101,13 +101,13 @@ public class ThirdFragment extends AppCompatActivity {
 //                    getActivity().startActivity(intent);
 //                }
 //            });
-//            Feedback.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(getActivity(), Feedback.class);
-//                    getActivity().startActivity(intent);
-//                }
-//            });
+            Feedback.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ThirdFragment.this,FeedBack_Activity.class);
+                    startActivity(intent);
+                }
+            });
 //            Demo.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
@@ -115,13 +115,13 @@ public class ThirdFragment extends AppCompatActivity {
 //                    getActivity().startActivity(intent);
 //                }
 //            });
-//            Change_Password.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(getActivity(), Password_change.class);
-//                    getActivity().startActivity(intent);
-//                }
-//            });
+            Change_Password.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ThirdFragment.this,ChangePassword.class);
+                    startActivity(intent);
+                }
+            });
 //
 
         }
