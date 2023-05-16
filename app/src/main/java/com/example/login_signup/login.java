@@ -152,7 +152,7 @@ public class login extends AppCompatActivity {
 
                                 Intent intent = new Intent(login.this,Profile.class);
 
-                                intent.putExtra("Name", nameFromDB);
+                                intent.putExtra("name", nameFromDB);
                                 intent.putExtra("email", emailFromDB);
                                 intent.putExtra("username", usernameFromDB);
                                 intent.putExtra("password", passwordFromDB);
@@ -163,7 +163,7 @@ public class login extends AppCompatActivity {
 
                                 Intent main= new Intent(login.this,MainActivity.class);
 
-                                startActivity(main);
+                                startActivity(intent);
                             } else {
                                 password.setError("Invalid Credentials");
                                 password.requestFocus();

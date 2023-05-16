@@ -40,7 +40,7 @@ public class Profile extends AppCompatActivity {
     //    private CircleImageView userImageView;
     private final String TAG = this.getClass().getName().toUpperCase();
     private FirebaseDatabase database;
-    Button profile;
+    Button profile,back;
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
     private DatabaseReference mDatabase;
@@ -67,6 +67,15 @@ public class Profile extends AppCompatActivity {
         passwordTxtView = findViewById(R.id.password_textview1);
         addressTxtView = findViewById(R.id.address_textview);
         usernameTxtView = findViewById(R.id.username_view);
+        back=findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(Profile.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
 //        userImageView = findViewById(R.id.user_imageview);
         emailImageView = findViewById(R.id.email_imageview);

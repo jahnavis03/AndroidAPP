@@ -21,6 +21,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 //import com.google.firebase.firestore.auth.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -54,7 +58,7 @@ public class signup extends AppCompatActivity {
     DatabaseReference mDatabase;
     FirebaseFirestore firebaseFirestore;
     String USERS="users";
-//    String TAG="Signup Activity";
+    //    String TAG="Signup Activity";
     User user;
 
     @Override
@@ -146,19 +150,37 @@ public class signup extends AppCompatActivity {
                     Toast.makeText(signup.this, "Enter Valid Phone Number", Toast.LENGTH_LONG).show();
                     return;
                 }
-                User user = new User(Username, Name, Email, Phone_No, Dob, Occupation, Address,Password);
-                mDatabase.child(Username).setValue(user);
+                Query usernameQuery = FirebaseDatabase.getInstance().getReference().child("users").orderByChild("username").equalTo(Username);
+                usernameQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.getChildrenCount()>0){
+                            Toast.makeText(signup.this,"USER already exists",Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            User user = new User(Username, Name, Email, Phone_No, Dob, Occupation, Address,Password);
+                            mDatabase.child(Username).setValue(user);
+                            Toast.makeText(signup.this, "You have signup successfully!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(signup.this,MainActivity.class);
+                            startActivity(intent);
+                        }
+                    }
 
-                Toast.makeText(signup.this, "You have signup successfully!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(signup.this,MainActivity.class);
-                startActivity(intent);
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+//                User user = new User(Username, Name, Email, Phone_No, Dob, Occupation, Address,Password);
+//                mDatabase.child(Username).setValue(user);
+
+
             }
         });
     }
-            public void updateUI(FirebaseUser currentUser) {
-                String keyId = mDatabase.push().getKey();
-                mDatabase.child(keyId).setValue(user); //adding user info to database
-                Intent loginIntent = new Intent(signup.this, MainActivity.class);
-                startActivity(loginIntent);}
-        }
-
+    public void updateUI(FirebaseUser currentUser) {
+        String keyId = mDatabase.push().getKey();
+        mDatabase.child(keyId).setValue(user); //adding user info to database
+        Intent loginIntent = new Intent(signup.this, MainActivity.class);
+        startActivity(loginIntent);}
+}

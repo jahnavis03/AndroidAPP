@@ -37,7 +37,7 @@ public class ThirdFragment extends AppCompatActivity {
         Gallery=findViewById(R.id.gallery);
         Capture=findViewById(R.id.capture);
         Settings=findViewById(R.id.settings);
-        Profile = findViewById(R.id.profile);
+//        Profile = findViewById(R.id.profile);
         Feedback=findViewById(R.id.feedback);
         Demo=findViewById(R.id.instructions);
         Change_Password=findViewById(R.id.change_password);
@@ -65,13 +65,13 @@ public class ThirdFragment extends AppCompatActivity {
                 }
             });
 
-            Profile.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(ThirdFragment.this, Profile.class);
-                    startActivity(intent);
-                }
-            });
+//            Profile.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent(ThirdFragment.this, Profile.class);
+//                    startActivity(intent);
+//                }
+//            });
             Gallery.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -108,13 +108,13 @@ public class ThirdFragment extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-//            Demo.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(getActivity(), Instruction.class);
-//                    getActivity().startActivity(intent);
-//                }
-//            });
+            Demo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ThirdFragment.this,instruction.class);
+                    startActivity(intent);
+                }
+            });
             Change_Password.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
